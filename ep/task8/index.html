@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="startButton">Start Loading</button>
+    <div id="progressW" style="width: 75%; background-color: #ccc; height: 30px;">
+        <div id="progress" style="width: 0%; background-color: #211a3d; height: 100%;"></div>
+    </div>
+    <p id="status">Progress 0%</p>
+    <script>
+        function load() {
+            const progressBar = document.getElementById('progress');
+            const statusText = document.getElementById('status');
+            let progress = 0;
+
+            const interval = setInterval(() => {
+                if (progress >= 100) {
+                    clearInterval(interval);
+                } else {
+                    progress++;
+                    progressBar.style.width = progress + '%';
+                    statusText.textContent = `Progress: ${progress}%`;
+                }
+            }, 10); 
+        }
+
+        document.getElementById('startButton').addEventListener('click', load);
+    </script>
+</body>
+</html>
